@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/jakubtarabasz/Desktop/nft-marketplace/backend/contracts/NFT.sol": {
-      "lastModificationDate": 1664225315822,
-      "contentHash": "23c7a6a783d4f84a4e63762ed95a6c6c",
+      "lastModificationDate": 1664481640481,
+      "contentHash": "49f5292738922e307447aeba897e0f2b",
       "sourceName": "backend/contracts/NFT.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -405,8 +405,8 @@
       ]
     },
     "/Users/jakubtarabasz/Desktop/nft-marketplace/backend/contracts/Marketplace.sol": {
-      "lastModificationDate": 1664395115019,
-      "contentHash": "aeeeafdfb55480c14dd4942de9387243",
+      "lastModificationDate": 1664481968540,
+      "contentHash": "ffe6e08e090903e13200e59713f4b9d6",
       "sourceName": "backend/contracts/Marketplace.sol",
       "solcConfig": {
         "version": "0.8.4",

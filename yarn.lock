@@ -1111,6 +1111,13 @@
 "@sindresorhus/is@^0.14.0":
   "version" "0.14.0"
 
+"@solidity-parser/parser@^0.14.3":
+  "integrity" "sha512-29g2SZ29HtsqA58pLCtopI1P/cPy5/UAzlcAXO6T/CNJimG6yA8kx4NaseMyJULiC+TEs02Y9/yeHzClqoA0hw=="
+  "resolved" "https://registry.npmjs.org/@solidity-parser/parser/-/parser-0.14.3.tgz"
+  "version" "0.14.3"
+  dependencies:
+    "antlr4ts" "^0.5.0-alpha.4"
+
 "@swc/helpers@0.4.11":
   "integrity" "sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw=="
   "resolved" "https://registry.npmjs.org/@swc/helpers/-/helpers-0.4.11.tgz"
@@ -1594,6 +1601,11 @@
   "integrity" "sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA=="
   "resolved" "https://registry.npmjs.org/ansi-styles/-/ansi-styles-5.2.0.tgz"
   "version" "5.2.0"
+
+"antlr4ts@^0.5.0-alpha.4":
+  "integrity" "sha512-WPQDt1B74OfPv/IMS2ekXAKkTZIHl88uMetg6q3OTqgFxZ/dxDXI0EWLyZid/1Pe6hTftyg5N7gel5wNAGxXyQ=="
+  "resolved" "https://registry.npmjs.org/antlr4ts/-/antlr4ts-0.5.0-alpha.4.tgz"
+  "version" "0.5.0-alpha.4"
 
 "any-signal@^3.0.0":
   "integrity" "sha512-xgZgJtKEa9YmDqXodIgl7Fl1C8yNXr8w6gXjqK3LW4GcEiYT+6AQfJSE/8SPsEpLLmcvbv8YU+qet94UewHxqg=="
@@ -3299,6 +3311,11 @@
     "inherits" "^2.0.4"
     "minimalistic-assert" "^1.0.1"
     "minimalistic-crypto-utils" "^1.0.1"
+
+"emoji-regex@^10.1.0":
+  "integrity" "sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA=="
+  "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.2.1.tgz"
+  "version" "10.2.1"
 
 "emoji-regex@^8.0.0":
   "integrity" "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="
@@ -7097,7 +7114,19 @@
 "prepend-http@^2.0.0":
   "version" "2.0.0"
 
-"prettier@^2.1.2":
+"prettier-plugin-solidity@^1.0.0-beta.24":
+  "integrity" "sha512-6JlV5BBTWzmDSq4kZ9PTXc3eLOX7DF5HpbqmmaF+kloyUwOZbJ12hIYsUaZh2fVgZdV2t0vWcvY6qhILhlzgqg=="
+  "resolved" "https://registry.npmjs.org/prettier-plugin-solidity/-/prettier-plugin-solidity-1.0.0-beta.24.tgz"
+  "version" "1.0.0-beta.24"
+  dependencies:
+    "@solidity-parser/parser" "^0.14.3"
+    "emoji-regex" "^10.1.0"
+    "escape-string-regexp" "^4.0.0"
+    "semver" "^7.3.7"
+    "solidity-comments-extractor" "^0.0.7"
+    "string-width" "^4.2.3"
+
+"prettier@^2.1.2", "prettier@^2.3.0", "prettier@^2.7.1":
   "integrity" "sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g=="
   "resolved" "https://registry.npmjs.org/prettier/-/prettier-2.7.1.tgz"
   "version" "2.7.1"
@@ -7961,6 +7990,11 @@
     "semver" "^5.5.0"
     "tmp" "0.0.33"
 
+"solidity-comments-extractor@^0.0.7":
+  "integrity" "sha512-wciNMLg/Irp8OKGrh3S2tfvZiZ0NEyILfcRCXCD4mp7SgK/i9gzLfhY2hY7VMCQJ3kH9UB9BzNdibIVMchzyYw=="
+  "resolved" "https://registry.npmjs.org/solidity-comments-extractor/-/solidity-comments-extractor-0.0.7.tgz"
+  "version" "0.0.7"
+
 "source-map-js@^1.0.2":
   "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
   "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
@@ -8119,7 +8153,7 @@
     "is-fullwidth-code-point" "^1.0.0"
     "strip-ansi" "^3.0.0"
 
-"string-width@^4.1.0", "string-width@^4.2.0":
+"string-width@^4.1.0", "string-width@^4.2.0", "string-width@^4.2.3":
   "integrity" "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g=="
   "resolved" "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   "version" "4.2.3"
