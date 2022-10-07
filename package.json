@@ -24,7 +24,8 @@
     "ipfs-http-client": "^56.0.1",
     "next": "12.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "recoil": "^0.7.5"
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
