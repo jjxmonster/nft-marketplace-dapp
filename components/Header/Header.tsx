@@ -1,28 +1,35 @@
 import * as React from "react";
-import { Signer } from "ethers";
-import { useRecoilState } from "recoil";
-import { userState } from "../../atoms/userAtoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { userState } from "../../atoms/atoms";
 
 import SearchIcon from "@mui/icons-material/Search";
-import { getAccount, getWeb3Provider } from "../../utils/interactions";
+
+import {
+  getAccount,
+  getMarketplaceContract,
+  getNFTContract,
+  getWeb3Provider,
+} from "../../utils/interactions";
+import { signerState } from "../../atoms/atoms";
 
 const Header = () => {
   const [user, setUser] = useRecoilState(userState);
+  const setSignerState = useSetRecoilState(signerState);
 
   const connectWallet = async () => {
     const provider = await getWeb3Provider();
     if (provider) {
-      const signer = await provider.getSigner();
+      const signer = provider.getSigner();
       const user = await getAccount(provider);
       setUser({
         address: user,
       });
+      setSignerState(signer);
     } else {
-      // TODO ERROR NOTIFICATION
+      window.alert("Please install MetaMask");
+      // TODO IMPLEMENT MESSAGE AS NOTIFICATION
     }
   };
-
-  const loadContracts = async (signer: Signer) => {};
 
   return (
     <header className="h-16 z-50 px-28 py-12 w-5/6 flex items-center justify-between bg-gray right-6">
@@ -38,6 +45,7 @@ const Header = () => {
           required
         />
       </div>
+
       {!user.address && (
         <button
           onClick={connectWallet}
