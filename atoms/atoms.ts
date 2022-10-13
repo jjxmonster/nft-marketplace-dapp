@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 import { NotificationState, UserState } from "../types/atomsTypes.js";
-import { Signer } from "ethers";
+import { ContractState } from "../types/atomsTypes";
 
 // USER
 export const userState = atom<UserState>({
@@ -11,11 +11,14 @@ export const userState = atom<UserState>({
   },
 });
 
-// SIGNER
-export const signerState = atom<Signer | null>({
+// CONTRACTS
+export const contractsState = atom<ContractState>({
   dangerouslyAllowMutability: true,
-  key: "signerState",
-  default: null,
+  key: "contractsState",
+  default: {
+    nft: null,
+    marketplace: null,
+  },
 });
 
 // NOTIFICATION

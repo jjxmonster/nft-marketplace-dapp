@@ -10,21 +10,24 @@ import {
   getNFTContract,
   getWeb3Provider,
 } from "../../utils/interactions";
-import { signerState } from "../../atoms/atoms";
+import { contractsState } from "../../atoms/atoms";
 
 const Header = () => {
   const [user, setUser] = useRecoilState(userState);
-  const setSignerState = useSetRecoilState(signerState);
+  const setContractsState = useSetRecoilState(contractsState);
 
   const connectWallet = async () => {
     const provider = await getWeb3Provider();
     if (provider) {
       const signer = provider.getSigner();
       const user = await getAccount(provider);
+      const nft = await getNFTContract(signer);
+      const marketplace = await getMarketplaceContract(signer);
+
       setUser({
         address: user,
       });
-      setSignerState(signer);
+      setContractsState({ nft, marketplace });
     } else {
       window.alert("Please install MetaMask");
       // TODO IMPLEMENT MESSAGE AS NOTIFICATION
