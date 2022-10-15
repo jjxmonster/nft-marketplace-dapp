@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className="min-h-screen flex bg-gray max-h-screen">
       <RecoilRoot>
         <AppLayout />
-        {/* <NotificationBox /> */}
+        <NotificationBox />
       </RecoilRoot>
       {/* <Component {...pageProps} /> */}
     </div>

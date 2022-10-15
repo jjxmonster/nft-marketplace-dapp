@@ -1,7 +1,6 @@
 import { atom } from "recoil";
 
-import { NotificationState, UserState } from "../types/atomsTypes.js";
-import { ContractState } from "../types/atomsTypes";
+import { NotificationState, UserState, ContractState } from "../types/types.js";
 
 // USER
 export const userState = atom<UserState>({
@@ -26,6 +25,7 @@ export const notificationState = atom<NotificationState>({
   key: "notificationState",
   default: {
     type: null,
-    title: "",
+    message: "",
+    isVisible: false,
   },
 });

@@ -1,4 +1,4 @@
-import { SidebarItemType } from "../types/sidebarTypes";
+import { SidebarItemType } from "../types/types";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AddBoxIcon from "@mui/icons-material/AddBox";
