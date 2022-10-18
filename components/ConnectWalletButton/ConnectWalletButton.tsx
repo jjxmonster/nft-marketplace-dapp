@@ -24,12 +24,19 @@ const ConnectWalletButton = () => {
       try {
         const signer = provider.getSigner();
         const user = await getAccount(provider);
-        // const nft = await getNFTContract(signer);
-        // const marketplace = await getMarketplaceContract(signer);
+        const nft = await getNFTContract(signer);
+        const marketplace = await getMarketplaceContract(signer);
+
+        setNotificationState({
+          type: NotificatonType.SUCCESS,
+          message: "Wallet connected successfully",
+          isVisible: true,
+        });
 
         setUser({
           address: user,
         });
+        setContractsState({ nft, marketplace });
       } catch ({ message }) {
         if (typeof message === "string") {
           setNotificationState({
@@ -39,11 +46,12 @@ const ConnectWalletButton = () => {
           });
         }
       }
-
-      //   setContractsState({ nft, marketplace });
     } else {
-      window.alert("Please install MetaMask");
-      // TODO IMPLEMENT MESSAGE AS NOTIFICATION
+      setNotificationState({
+        type: NotificatonType.INFORMATION,
+        message: "Please install MetaMask",
+        isVisible: true,
+      });
     }
   };
   return (

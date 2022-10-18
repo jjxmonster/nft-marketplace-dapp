@@ -45,9 +45,12 @@ export const getNFTContract = async (
   try {
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
     return nft;
-  } catch {
-    return null;
+  } catch ({ message }) {
+    if (typeof message === "string") {
+      throw new Error(message);
+    }
   }
+  return null;
 };
 
 export const getMarketplaceContract = async (
@@ -60,7 +63,10 @@ export const getMarketplaceContract = async (
       signer
     );
     return nft;
-  } catch (error) {
-    return null;
+  } catch (message) {
+    if (typeof message === "string") {
+      throw new Error(message);
+    }
   }
+  return null;
 };

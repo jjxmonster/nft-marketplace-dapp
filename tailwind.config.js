@@ -12,6 +12,9 @@ module.exports = {
         "light-gray": "#989EAD",
         "purple-light": "#6C63FF",
         "purple-dark": "#3F3D56",
+        danger: "#d32f2f",
+        information: "#0288d1",
+        success: "#388E3C",
       },
       fontSize: {
         xs: "0.75rem",
