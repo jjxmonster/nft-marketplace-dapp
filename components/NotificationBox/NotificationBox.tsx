@@ -42,14 +42,15 @@ const NotificationBox = () => {
         null;
     }
   }, [type]);
-  //   useEffect(() => {
-  //     isVisible &&
-  //       setTimeout(() => {
-  //         resetNotificationState();
-  //       }, 5000);
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, [isVisible]);
-  console.log(boxBackground);
+
+  useEffect(() => {
+    isVisible &&
+      setTimeout(() => {
+        resetNotificationState();
+      }, 5000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
+
   return (
     <div
       className={` ${
