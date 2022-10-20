@@ -24,12 +24,7 @@ export const connectWallet = async ({
       const nft = await getNFTContract(signer);
       const marketplace = await getMarketplaceContract(signer);
 
-      // setNotificationState({
-      //   type: NotificatonType.SUCCESS,
-      //   message: "Wallet connected successfully",
-      //   isVisible: true,
-      // });
-      const response = await fetch("/api/auth/nonce", {
+      let response = await fetch("/api/auth/nonce", {
         method: "POST",
         body: JSON.stringify({ address: user }),
         headers: {
@@ -39,10 +34,17 @@ export const connectWallet = async ({
 
       const { nonce } = await response.json();
       const signature = await signer.signMessage(nonce);
-      // setUser({
-      //   address: user,
-      // });
-      // setContractsState({ nft, marketplace });
+
+      response = await fetch("/api/auth/wallet", {
+        method: "POST",
+        body: JSON.stringify({ address: user, signature, nonce }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
     } catch ({ message }) {
       if (typeof message === "string") {
         setNotificationState({

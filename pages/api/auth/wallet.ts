@@ -8,7 +8,7 @@ const walletApi = async (req: NextApiRequest, res: NextApiResponse) => {
     const { address, signature, nonce } = req.body;
     const signer_address = ethers.utils.verifyMessage(nonce, signature);
 
-    if (signer_address !== address) {
+    if (signer_address.toLowerCase() !== address) {
       throw new Error("wrong_signature");
     }
 
@@ -21,6 +21,7 @@ const walletApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json({ data });
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error });
   }
 };
