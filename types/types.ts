@@ -34,3 +34,9 @@ export type ResponseType = {
   data: any;
   message?: string;
 };
+
+// FUNCTIONS ARGUMENTS
+export interface ConnectWalletFunctionArguments {
+  setNotificationState: (state: NotificationState) => void;
+  setUser: (state: UserState) => void;
+}
