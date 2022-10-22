@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import * as React from "react";
 
-import { SidebarItemType } from "../../types/sidebarTypes";
+import { SidebarItemType } from "../../types/types";
 
 type Props = {
   itemObject: SidebarItemType;

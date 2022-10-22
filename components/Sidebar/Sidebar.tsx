@@ -1,9 +1,31 @@
 import * as React from "react";
 
-import { sideBarItems } from "../../utils/sidebarUtils";
 import SidebarItem from "../SidebarItem/SidebarItem";
 
 import StorefrontIcon from "@mui/icons-material/Storefront";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import ExploreIcon from "@mui/icons-material/Explore";
+
+import { SidebarItemType } from "../../types/types";
+
+const sideBarItems: Array<SidebarItemType> = [
+  {
+    name: "Home",
+    pathname: "/",
+    icon: <DashboardIcon style={{ fontSize: "1.8rem" }} />,
+  },
+  {
+    name: "Create",
+    pathname: "/create",
+    icon: <AddBoxIcon style={{ fontSize: "1.8rem" }} />,
+  },
+  {
+    name: "Explore",
+    pathname: "/explore",
+    icon: <ExploreIcon style={{ fontSize: "1.8rem" }} />,
+  },
+];
 
 const Sidebar = () => {
   return (

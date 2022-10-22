@@ -1,12 +1,12 @@
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseSecretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY;
 
-if (!supabaseUrl || !supabaseSecretKey) {
+if (!supabaseUrl || !supabaseServiceKey) {
   throw new Error("Missing API keys for Supabase");
 }
 
-const supabase = createClient(supabaseUrl, supabaseSecretKey);
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 export default supabase;

@@ -1,15 +1,9 @@
-import { Web3Provider } from "@ethersproject/providers";
-import { BaseContract, Signer } from "ethers";
-import { ethers } from "ethers";
-
-import NFTAddress from "../contractsData/NFT-address.json";
-import NFTAbi from "../contractsData/NFT.json";
-import MarketplaceAddress from "../contractsData/Marketplace-address.json";
-import MarketplaceAbi from "../contractsData/Marketplace.json";
 import {
   ConnectWalletFunctionArguments,
   NotificatonType,
 } from "../types/types";
+
+import { getAccount, getWeb3Provider, signMessage } from "./metamask";
 
 // WALLET CONNECTION HANDLER
 export const connectWallet = async ({
@@ -20,31 +14,32 @@ export const connectWallet = async ({
   if (provider) {
     try {
       const signer = provider.getSigner();
-      const user = await getAccount(provider);
-      const nft = await getNFTContract(signer);
-      const marketplace = await getMarketplaceContract(signer);
+      const address = await getAccount(provider);
 
       let response = await fetch("/api/auth/nonce", {
         method: "POST",
-        body: JSON.stringify({ address: user }),
+        body: JSON.stringify({ address }),
         headers: {
           "Content-Type": "application/json",
         },
       });
 
       const { nonce } = await response.json();
-      const signature = await signer.signMessage(nonce);
+      const signature = await signMessage(signer, nonce);
 
       response = await fetch("/api/auth/wallet", {
         method: "POST",
-        body: JSON.stringify({ address: user, signature, nonce }),
+        body: JSON.stringify({ address, signature, nonce }),
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      const data = await response.json();
-      console.log(data);
+      const { user, token } = await response.json();
+
+      console.log(token);
+
+      // setUser(user);
     } catch ({ message }) {
       if (typeof message === "string") {
         setNotificationState({
@@ -61,68 +56,4 @@ export const connectWallet = async ({
       isVisible: true,
     });
   }
-};
-
-// METAMASK
-export const getWeb3Provider = async (): Promise<Web3Provider | null> => {
-  if (typeof window.ethereum !== "undefined") {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-    return provider;
-  } else {
-    return null;
-  }
-};
-
-export const getAccount = async (
-  provider: Web3Provider
-): Promise<string | null> => {
-  try {
-    const accounts: Array<string> = await provider.send(
-      "eth_requestAccounts",
-      []
-    );
-    const account = accounts[0];
-
-    return account;
-  } catch ({ message }) {
-    if (typeof message === "string") {
-      throw new Error(message);
-    }
-  }
-
-  return null;
-};
-
-// CONTRACTS
-export const getNFTContract = async (
-  signer: Signer
-): Promise<BaseContract | null> => {
-  try {
-    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
-    return nft;
-  } catch ({ message }) {
-    if (typeof message === "string") {
-      throw new Error(message);
-    }
-  }
-  return null;
-};
-
-export const getMarketplaceContract = async (
-  signer: Signer
-): Promise<BaseContract | null> => {
-  try {
-    const nft = new ethers.Contract(
-      MarketplaceAddress.address,
-      MarketplaceAbi.abi,
-      signer
-    );
-    return nft;
-  } catch (message) {
-    if (typeof message === "string") {
-      throw new Error(message);
-    }
-  }
-  return null;
 };

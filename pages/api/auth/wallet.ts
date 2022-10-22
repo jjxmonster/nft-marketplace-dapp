@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ethers } from "ethers";
+import jwt from "jsonwebtoken";
 
 import supabase from "../../../services/supabase/supabase";
 
@@ -12,14 +13,29 @@ const walletApi = async (req: NextApiRequest, res: NextApiResponse) => {
       throw new Error("wrong_signature");
     }
 
-    let { data, error } = await supabase
+    let { data: user, error } = await supabase
       .from("users")
       .select("*")
       .eq("address", address)
       .eq("nonce", nonce)
       .single();
 
-    res.status(200).json({ data });
+    const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET ?? "";
+
+    const token = jwt.sign(
+      {
+        aud: "authenticated",
+        exp: Math.floor(Date.now() / 1000 + 60 * 60),
+        sub: user.id,
+        user_metadata: {
+          id: user.id,
+        },
+        role: "authenticated",
+      },
+      SUPABASE_JWT_SECRET
+    );
+
+    res.status(200).json({ user, token });
   } catch (error) {
     console.log(error);
     res.status(400).json({ error });

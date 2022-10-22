@@ -55,7 +55,7 @@ const NotificationBox = () => {
     <div
       className={` ${
         !isVisible && "hidden"
-      } flex justify-between ${boxBackground} items-center space-x-4 p-4 mb-4 border-black border-solid border-2  absolute right-5 top-5 z-50 rounded-lg shadow text-white `}
+      } flex justify-between ${boxBackground} items-center space-x-4 p-3 mb-4 border-black border-solid border-2  absolute right-5 top-5 z-50 rounded-lg shadow text-white `}
       role="alert"
     >
       {iconType()}
