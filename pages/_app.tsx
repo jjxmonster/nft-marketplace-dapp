@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import AppLayout from "../components/Layout/Layout";
 import { RecoilRoot } from "recoil";
 import NotificationBox from "../components/NotificationBox/NotificationBox";
+import { createClient } from "@supabase/supabase-js";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

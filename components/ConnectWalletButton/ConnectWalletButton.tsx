@@ -14,12 +14,14 @@ const ConnectWalletButton = () => {
   const setContractsState = useSetRecoilState(contractsState);
 
   return (
-    <button
-      onClick={() => connectWallet({ setNotificationState, setUser })}
-      className="bg-purple-light px-6 py-2 border-solid border-purple-light border-2 transition rounded-full text-white hover:bg-transparent hover:text:purple-light"
-    >
-      Connect Wallet
-    </button>
+    <>
+      <button
+        onClick={() => connectWallet({ setNotificationState, setUser })}
+        className="bg-purple-light px-6 py-2 border-solid border-purple-light border-2 transition rounded-full text-white hover:bg-transparent hover:text:purple-light"
+      >
+        Connect Wallet
+      </button>
+    </>
   );
 };
 
