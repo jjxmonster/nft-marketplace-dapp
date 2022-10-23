@@ -1,5 +1,7 @@
+import { NONCE_API, WALLET_API } from "../constants/constants";
+
 export const getNonce = async (address: string | void) => {
-  const response = await fetch("/api/auth/nonce", {
+  const response = await fetch(NONCE_API, {
     method: "POST",
     body: JSON.stringify({ address }),
     headers: {
@@ -15,7 +17,7 @@ export const getUser = async (
   signature: string | void,
   nonce: string
 ) => {
-  const response = await fetch("/api/auth/wallet", {
+  const response = await fetch(WALLET_API, {
     method: "POST",
     body: JSON.stringify({ address, signature, nonce }),
     headers: {
@@ -23,7 +25,7 @@ export const getUser = async (
     },
   });
 
-  const { user } = await response.json();
+  const { user, token } = await response.json();
 
   return user;
 };

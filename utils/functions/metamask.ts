@@ -1,6 +1,7 @@
 import { Web3Provider } from "@ethersproject/providers";
 import { Signer } from "ethers";
 import { ethers } from "ethers";
+import { MSG_SIGNATURE_ERROR } from "../constants/constants";
 
 export const getWeb3Provider = async (): Promise<Web3Provider | void> => {
   if (typeof window.ethereum !== "undefined") {
@@ -37,6 +38,6 @@ export const signMessage = async (
 
     return signature;
   } catch {
-    throw new Error("User denied message signature.");
+    throw new Error(MSG_SIGNATURE_ERROR);
   }
 };

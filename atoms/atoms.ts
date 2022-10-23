@@ -1,6 +1,11 @@
 import { atom } from "recoil";
 
-import { NotificationState, UserState, ContractState } from "../types/types.js";
+import {
+  NotificationState,
+  UserState,
+  ContractState,
+  LoadingState,
+} from "../types/types.js";
 
 // USER
 export const userState = atom<UserState>({
@@ -27,5 +32,14 @@ export const notificationState = atom<NotificationState>({
     type: null,
     message: "",
     isVisible: false,
+  },
+});
+
+// LOADING
+export const loadingState = atom<LoadingState>({
+  key: "loadingState",
+  default: {
+    isLoading: false,
+    message: "",
   },
 });

@@ -7,7 +7,6 @@ export enum NotificatonType {
   INFORMATION,
   SUCCESS,
 }
-
 export interface UserState {
   address: string | null;
 }
@@ -19,6 +18,10 @@ export interface NotificationState {
   type: NotificatonType | null;
   message: string;
   isVisible: boolean;
+}
+export interface LoadingState {
+  isLoading: boolean;
+  message: string;
 }
 
 // SIDEBAR
@@ -39,4 +42,5 @@ export type ResponseType = {
 export interface ConnectWalletFunctionArguments {
   setNotificationState: (state: NotificationState) => void;
   setUser: (state: UserState) => void;
+  setLoadingState: (state: LoadingState) => void;
 }

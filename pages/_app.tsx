@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import AppLayout from "../components/Layout/Layout";
 import { RecoilRoot } from "recoil";
 import NotificationBox from "../components/NotificationBox/NotificationBox";
-import { createClient } from "@supabase/supabase-js";
+import LoadingIndicator from "../components/LoadingIndicator/LoadingIndicator";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <AppLayout />
         <NotificationBox />
+        <LoadingIndicator />
       </RecoilRoot>
       {/* <Component {...pageProps} /> */}
     </div>

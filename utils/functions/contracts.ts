@@ -1,10 +1,10 @@
 import { BaseContract, Signer } from "ethers";
 import { ethers } from "ethers";
 
-import NFTAddress from "../contractsData/NFT-address.json";
-import NFTAbi from "../contractsData/NFT.json";
-import MarketplaceAddress from "../contractsData/Marketplace-address.json";
-import MarketplaceAbi from "../contractsData/Marketplace.json";
+import NFTAddress from "../../contractsData/NFT-address.json";
+import NFTAbi from "../../contractsData/NFT.json";
+import MarketplaceAddress from "../../contractsData/Marketplace-address.json";
+import MarketplaceAbi from "../../contractsData/Marketplace.json";
 
 export const getNFTContract = async (
   signer: Signer

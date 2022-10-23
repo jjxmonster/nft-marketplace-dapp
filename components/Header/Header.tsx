@@ -2,7 +2,6 @@ import * as React from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../atoms/atoms";
 
-import SearchIcon from "@mui/icons-material/Search";
 import ConnectWalletButton from "../ConnectWalletButton/ConnectWalletButton";
 
 const Header = () => {
