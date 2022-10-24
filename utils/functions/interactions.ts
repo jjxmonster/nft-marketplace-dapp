@@ -1,11 +1,9 @@
 import {
-  ConnectWalletFunctionArguments,
+  ConnectWalletFunctionArgumentsType,
   NotificatonType,
 } from "../../types/types";
 import {
-  MGS_NONCE_GENERATING,
   MSG_METAMASK_ERROR,
-  MSG_NONCE_WAITING,
   MSG_USER_LOGGED,
   MSG_WALLET_CONNECTING,
 } from "../constants/constants";
@@ -18,7 +16,7 @@ export const connectWallet = async ({
   setNotificationState,
   setUser,
   setLoadingState,
-}: ConnectWalletFunctionArguments) => {
+}: ConnectWalletFunctionArgumentsType) => {
   setLoadingState({
     isLoading: true,
     message: MSG_WALLET_CONNECTING,
@@ -28,16 +26,8 @@ export const connectWallet = async ({
     try {
       const signer = provider.getSigner();
       const address = await getAccount(provider);
-      setLoadingState({
-        isLoading: true,
-        message: MGS_NONCE_GENERATING,
-      });
-      const nonce = await getNonce(address);
-      setLoadingState({
-        isLoading: true,
-        message: MSG_NONCE_WAITING,
-      });
-      const signature = await signMessage(signer, nonce);
+      const nonce = await getNonce(address, setLoadingState);
+      const signature = await signMessage(signer, nonce, setLoadingState);
       const user = await getUser(address, signature, nonce);
 
       setLoadingState({
@@ -51,6 +41,10 @@ export const connectWallet = async ({
       });
       setUser(user);
     } catch ({ message }) {
+      setLoadingState({
+        isLoading: false,
+        message: "",
+      });
       if (typeof message === "string") {
         setNotificationState({
           type: NotificatonType.DANGER,

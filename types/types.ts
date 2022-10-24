@@ -7,19 +7,19 @@ export enum NotificatonType {
   INFORMATION,
   SUCCESS,
 }
-export interface UserState {
+export interface UserStateType {
   address: string | null;
 }
-export interface ContractState {
+export interface ContractStateType {
   nft: BaseContract | null;
   marketplace: BaseContract | null;
 }
-export interface NotificationState {
+export interface NotificationStateType {
   type: NotificatonType | null;
   message: string;
   isVisible: boolean;
 }
-export interface LoadingState {
+export interface LoadingStateType {
   isLoading: boolean;
   message: string;
 }
@@ -39,8 +39,8 @@ export type ResponseType = {
 };
 
 // FUNCTIONS ARGUMENTS
-export interface ConnectWalletFunctionArguments {
-  setNotificationState: (state: NotificationState) => void;
-  setUser: (state: UserState) => void;
-  setLoadingState: (state: LoadingState) => void;
+export interface ConnectWalletFunctionArgumentsType {
+  setNotificationState: (state: NotificationStateType) => void;
+  setUser: (state: UserStateType) => void;
+  setLoadingState: (state: LoadingStateType) => void;
 }

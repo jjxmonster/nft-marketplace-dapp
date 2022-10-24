@@ -7,9 +7,7 @@ const AppLayout: FunctionComponent = () => {
   return (
     <>
       <Sidebar />
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <Header />
-      </React.Suspense>
+      <Header />
     </>
   );
 };

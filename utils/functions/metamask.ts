@@ -1,7 +1,8 @@
 import { Web3Provider } from "@ethersproject/providers";
 import { Signer } from "ethers";
 import { ethers } from "ethers";
-import { MSG_SIGNATURE_ERROR } from "../constants/constants";
+import { LoadingStateType } from "../../types/types";
+import { MSG_NONCE_WAITING, MSG_SIGNATURE_ERROR } from "../constants/constants";
 
 export const getWeb3Provider = async (): Promise<Web3Provider | void> => {
   if (typeof window.ethereum !== "undefined") {
@@ -31,8 +32,13 @@ export const getAccount = async (
 
 export const signMessage = async (
   signer: Signer,
-  nonce: string
+  nonce: string,
+  setLoadingState: (state: LoadingStateType) => void
 ): Promise<string | void> => {
+  setLoadingState({
+    isLoading: true,
+    message: MSG_NONCE_WAITING,
+  });
   try {
     const signature = await signer.signMessage(nonce);
 
