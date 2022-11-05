@@ -7,6 +7,8 @@ import {
   MSG_USER_LOGGED,
   MSG_WALLET_CONNECTING,
 } from "../constants/constants";
+import supabase from "../supabase/supabase";
+import { getMarketplaceContract, getNFTContract } from "./contracts";
 
 import { getNonce, getUser } from "./data";
 import { getAccount, getWeb3Provider, signMessage } from "./metamask";
@@ -16,6 +18,7 @@ export const connectWallet = async ({
   setNotificationState,
   setUser,
   setLoadingState,
+  setContractsState,
 }: ConnectWalletFunctionArgumentsType) => {
   setLoadingState({
     isLoading: true,
@@ -28,8 +31,18 @@ export const connectWallet = async ({
       const address = await getAccount(provider);
       const nonce = await getNonce(address, setLoadingState);
       const signature = await signMessage(signer, nonce, setLoadingState);
-      const user = await getUser(address, signature, nonce);
+      const { user, token } = await getUser(address, signature, nonce);
+      const nft = await getNFTContract(signer);
+      const marketplace = await getMarketplaceContract(signer);
 
+      supabase.functions.setAuth(token);
+
+      nft &&
+        marketplace &&
+        setContractsState({
+          nft,
+          marketplace,
+        });
       setLoadingState({
         isLoading: false,
         message: "",

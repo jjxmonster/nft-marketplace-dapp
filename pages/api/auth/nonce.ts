@@ -13,7 +13,7 @@ const nonceApi = async (req: NextApiRequest, res: NextApiResponse) => {
     .from("users")
     .select("nonce")
     .eq("address", address);
-
+  console.log(error);
   if (data?.length) {
     let { data, error } = await supabase
       .from("users")

@@ -1,14 +1,14 @@
 import { atom } from "recoil";
 
 import {
-  NotificationState,
-  UserState,
-  ContractState,
-  LoadingState,
+  NotificationStateType,
+  UserStateType,
+  ContractStateType,
+  LoadingStateType,
 } from "../types/types.js";
 
 // USER
-export const userState = atom<UserState>({
+export const userState = atom<UserStateType>({
   key: "userState",
   default: {
     address: null,
@@ -16,7 +16,7 @@ export const userState = atom<UserState>({
 });
 
 // CONTRACTS
-export const contractsState = atom<ContractState>({
+export const contractsState = atom<ContractStateType>({
   dangerouslyAllowMutability: true,
   key: "contractsState",
   default: {
@@ -26,7 +26,7 @@ export const contractsState = atom<ContractState>({
 });
 
 // NOTIFICATION
-export const notificationState = atom<NotificationState>({
+export const notificationState = atom<NotificationStateType>({
   key: "notificationState",
   default: {
     type: null,
@@ -36,7 +36,7 @@ export const notificationState = atom<NotificationState>({
 });
 
 // LOADING
-export const loadingState = atom<LoadingState>({
+export const loadingState = atom<LoadingStateType>({
   key: "loadingState",
   default: {
     isLoading: false,

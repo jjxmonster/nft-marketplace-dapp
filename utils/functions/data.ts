@@ -39,5 +39,5 @@ export const getUser = async (
 
   const { user, token } = await response.json();
 
-  return user;
+  return { user, token };
 };

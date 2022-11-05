@@ -43,4 +43,5 @@ export interface ConnectWalletFunctionArgumentsType {
   setNotificationState: (state: NotificationStateType) => void;
   setUser: (state: UserStateType) => void;
   setLoadingState: (state: LoadingStateType) => void;
+  setContractsState: (state: ContractStateType) => void;
 }
