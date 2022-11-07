@@ -13,14 +13,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <div className="min-h-screen flex bg-gray max-h-screen">
-      <RecoilRoot>
+    <RecoilRoot>
+      <div className="min-h-screen bg-gray max-h-screen grid grid-cols-4 grid-rows-6 gap-2">
         <AppLayout />
         <NotificationBox />
         <LoadingIndicator />
         <Component {...pageProps} />
-      </RecoilRoot>
-    </div>
+      </div>
+    </RecoilRoot>
   );
 }
 

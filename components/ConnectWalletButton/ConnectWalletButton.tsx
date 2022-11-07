@@ -8,6 +8,7 @@ import {
   userState,
 } from "../../atoms/atoms";
 import { connectWallet } from "../../utils/functions/interactions";
+import Button from "../Button/Button";
 
 const ConnectWalletButton = () => {
   const setUser = useSetRecoilState(userState);
@@ -17,19 +18,18 @@ const ConnectWalletButton = () => {
 
   return (
     <>
-      <button
+      <Button
+        color="primary"
+        label="Connect Wallet"
         onClick={() =>
           connectWallet({
-            setNotificationState,
             setUser,
+            setNotificationState,
             setLoadingState,
             setContractsState,
           })
         }
-        className="bg-purple-light px-6 py-2 border-solid border-purple-light border-2 transition rounded-full text-white hover:bg-transparent hover:text:purple-light"
-      >
-        Connect Wallet
-      </button>
+      />
     </>
   );
 };
