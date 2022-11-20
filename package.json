@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@hookform/resolvers": "^2.9.10",
     "@mui/icons-material": "^5.10.6",
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-waffle": "^2.0.2",
@@ -29,7 +30,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.39.4",
     "recoil": "^0.7.5",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",

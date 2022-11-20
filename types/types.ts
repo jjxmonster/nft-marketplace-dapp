@@ -39,11 +39,18 @@ export type ResponseType = {
 };
 
 // CREATE NFT FORM VALUES
-export type FormValues = {
+export type CreateNFTFormValues = {
   nft: string;
   title: string;
   price: number;
   description: string;
+};
+
+export type CreateNFTFormItem = {
+  type: string;
+  formKey: "title" | "price" | "description" | "nft";
+  label: string;
+  area: boolean;
 };
 
 // FUNCTIONS ARGUMENTS

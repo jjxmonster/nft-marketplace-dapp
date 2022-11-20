@@ -17,6 +17,8 @@ const UploadArea = () => {
     return "";
   };
 
+  const handleRemoveFile = () => setSelectedFile(undefined);
+
   return (
     <div className="w-full flex flex-col gap-3">
       <div>
@@ -24,12 +26,15 @@ const UploadArea = () => {
         <p className="text-light-gray">Drag or choose your file to upload</p>
       </div>
       {selectedFile ? (
-        <Image
-          src={getImagePreview()}
-          alt="NFT Preview"
-          width={400}
-          height={400}
-        />
+        <div className="h-80 w-80 relative">
+          <div
+            onClick={handleRemoveFile}
+            className="w-full h-full flex text-xl cursor-pointer font-bold text-white items-center justify-center absolute opacity-0 bg-black inset-0 z-50 hover:opacity-50 transition"
+          >
+            REMOVE
+          </div>
+          <Image src={getImagePreview()} alt="NFT Preview" layout="fill" />
+        </div>
       ) : (
         <div className="w-full rounded transition hover:bg-transparent border-2 bg-gray-200 border-dashed border-purple-light h-52">
           <label
@@ -42,7 +47,8 @@ const UploadArea = () => {
             </p>
             <input
               accept="image/*"
-              onChange={e => e.target?.files && handleChange(e.target?.files)}
+              onChange={e => e.target?.files && handleChange(e.target.files)}
+              value={selectedFile}
               id="dropzone-file"
               type="file"
               className="hidden"
