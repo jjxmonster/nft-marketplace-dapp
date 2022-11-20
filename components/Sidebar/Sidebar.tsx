@@ -29,7 +29,7 @@ const sideBarItems: Array<SidebarItemType> = [
 
 const Sidebar = () => {
   return (
-    <div className="h-screen row-span-2 relative w-full flex flex-col px-12 py-16 after:w-full after:h-5/6 after:border-gray-100 after:border-r after:absolute after:m-auto after:inset-0 ">
+    <div className="h-screen fixed w-96	flex z-50 flex-col px-12 py-16 after:w-full after:h-5/6 after:border-gray-100 after:border-r after:absolute after:m-auto after:inset-0 ">
       <div className="w-full h-16 flex items-center justify-center">
         <StorefrontIcon
           className="text-purple-light text-6xl"

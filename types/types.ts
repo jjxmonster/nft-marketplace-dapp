@@ -38,6 +38,14 @@ export type ResponseType = {
   message?: string;
 };
 
+// CREATE NFT FORM VALUES
+export type FormValues = {
+  nft: string;
+  title: string;
+  price: number;
+  description: string;
+};
+
 // FUNCTIONS ARGUMENTS
 export interface ConnectWalletFunctionArgumentsType {
   setNotificationState: (state: NotificationStateType) => void;

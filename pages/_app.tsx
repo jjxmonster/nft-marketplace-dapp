@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <RecoilRoot>
-      <div className="min-h-screen bg-gray max-h-screen grid grid-cols-4 grid-rows-6 gap-2">
+      <div className="min-h-screen bg-gray grid grid-cols-4 grid-rows-6 gap-2">
         <AppLayout />
         <NotificationBox />
         <LoadingIndicator />

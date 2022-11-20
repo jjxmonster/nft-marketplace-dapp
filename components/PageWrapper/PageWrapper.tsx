@@ -6,7 +6,7 @@ interface PageWrapperProps {
 
 const PageWrapper: FunctionComponent<PageWrapperProps> = ({ children }) => {
   return (
-    <div className="col-start-2 flex items-start col-span-4 row-span-4 px-24">
+    <div className="col-start-2 row-start-2 flex items-start col-span-4 row-span-4 px-24">
       {children}
     </div>
   );

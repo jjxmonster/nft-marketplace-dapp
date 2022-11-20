@@ -1,12 +1,17 @@
 import React from "react";
-import NotConnectedWallet from "../../components/NotConnectedWallet/NotConnectedWallet";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../atoms/atoms";
 
+import CreateNFTForm from "../../components/CreateNFTForm/CreateNFTForm";
+import NotConnectedWallet from "../../components/NotConnectedWallet/NotConnectedWallet";
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 
 const Create = () => {
+  const { address } = useRecoilValue(userState);
+
   return (
     <PageWrapper>
-      <NotConnectedWallet />
+      {address ? <CreateNFTForm /> : <NotConnectedWallet />}
     </PageWrapper>
   );
 };

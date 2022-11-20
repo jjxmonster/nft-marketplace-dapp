@@ -4,6 +4,7 @@ interface PrimaryButtonProps {
   label: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   color: "primary" | "secondary";
+  fullWidth?: boolean;
 }
 
 const buttonTheme = {
@@ -17,11 +18,14 @@ const Button: React.FunctionComponent<PrimaryButtonProps> = ({
   label,
   onClick,
   color,
+  fullWidth = false,
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-2 border-solid  border-2 transition rounded-full ${buttonTheme[color]}`}
+      className={`px-6 py-2 ${
+        fullWidth ? "w-full" : ""
+      } border-solid  border-2 transition rounded-full ${buttonTheme[color]}`}
     >
       {label}
     </button>
